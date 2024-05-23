@@ -1,0 +1,7 @@
+Scratch repository used for testing new Gnulib modules.
+
+CI and build scripts written by Bruno Haible:
+<https://lists.gnu.org/archive/html/bug-gnulib/2024-05/msg00371.html>.
+
+Information about how to use clone and use Gnulib can be found here:
+<https://www.gnu.org/software/gnulib/>.
