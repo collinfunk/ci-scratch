@@ -241,6 +241,28 @@ EXTRA_DIST += warn-on-use.h
 
 ## end   gnulib module snippet/warn-on-use
 
+## begin gnulib module stdbool-c99
+
+BUILT_SOURCES += $(STDBOOL_H)
+
+# We need the following in order to create <stdbool.h> when the system
+# doesn't have one that works.
+if GL_GENERATE_STDBOOL_H
+stdbool.h: stdbool.in.h $(top_builddir)/config.status
+	$(gl_V_at)$(SED_HEADER_STDOUT) \
+	  -e 's/@''HAVE__BOOL''@/$(HAVE__BOOL)/g' \
+	  $(srcdir)/stdbool.in.h > $@-t
+	$(AM_V_at)mv $@-t $@
+else
+stdbool.h: $(top_builddir)/config.status
+	rm -f $@
+endif
+MOSTLYCLEANFILES += stdbool.h stdbool.h-t
+
+EXTRA_DIST += stdbool.in.h
+
+## end   gnulib module stdbool-c99
+
 ## begin gnulib module stddef
 
 BUILT_SOURCES += $(STDDEF_H)

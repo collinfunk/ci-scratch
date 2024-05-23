@@ -930,6 +930,10 @@ HAVE_MAX_ALIGN_T
 REPLACE_NULL
 STDDEF_NOT_IDEMPOTENT
 NULLPTR_T_NEEDS_STDDEF
+GL_GENERATE_STDBOOL_H_FALSE
+GL_GENERATE_STDBOOL_H_TRUE
+STDBOOL_H
+HAVE__BOOL
 GL_GENERATE_LIMITS_H_FALSE
 GL_GENERATE_LIMITS_H_TRUE
 LIMITS_H
@@ -2490,65 +2494,6 @@ rm -f conftest.val
 
 } # ac_fn_c_compute_int
 
-# ac_fn_check_decl LINENO SYMBOL VAR INCLUDES EXTRA-OPTIONS FLAG-VAR
-# ------------------------------------------------------------------
-# Tests whether SYMBOL is declared in INCLUDES, setting cache variable VAR
-# accordingly. Pass EXTRA-OPTIONS to the compiler, using FLAG-VAR.
-ac_fn_check_decl ()
-{
-  ac_saved_ac_compile="$ac_compile"
-  if test -n "$ac_compile_for_check_decl"; then
-    ac_compile="$ac_compile_for_check_decl"
-  fi
-  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
-  as_decl_name=`echo $2|sed 's/ *(.*//'`
-  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $as_decl_name is declared" >&5
-printf %s "checking whether $as_decl_name is declared... " >&6; }
-if eval test \${$3+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) as_decl_use=`echo $2|sed -e 's/(/((/' -e 's/)/) 0&/' -e 's/,/) 0& (/g'`
-  eval ac_save_FLAGS=\$$6
-  as_fn_append $6 " $5"
-  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-$4
-int
-main (void)
-{
-#ifndef $as_decl_name
-#ifdef __cplusplus
-  (void) $as_decl_use;
-#else
-  (void) $as_decl_name;
-#endif
-#endif
-
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_compile "$LINENO"
-then :
-  eval "$3=yes"
-else case e in #(
-  e) eval "$3=no" ;;
-esac
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
-  eval $6=\$ac_save_FLAGS
- ;;
-esac
-fi
-eval ac_res=\$$3
-	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
-printf "%s\n" "$ac_res" >&6; }
-  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
-  ac_compile="$ac_saved_ac_compile"
-
-} # ac_fn_check_decl
-
 # ac_fn_c_check_type LINENO TYPE VAR INCLUDES
 # -------------------------------------------
 # Tests whether TYPE exists after having included INCLUDES, setting cache
@@ -2607,6 +2552,65 @@ printf "%s\n" "$ac_res" >&6; }
   eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
 
 } # ac_fn_c_check_type
+
+# ac_fn_check_decl LINENO SYMBOL VAR INCLUDES EXTRA-OPTIONS FLAG-VAR
+# ------------------------------------------------------------------
+# Tests whether SYMBOL is declared in INCLUDES, setting cache variable VAR
+# accordingly. Pass EXTRA-OPTIONS to the compiler, using FLAG-VAR.
+ac_fn_check_decl ()
+{
+  ac_saved_ac_compile="$ac_compile"
+  if test -n "$ac_compile_for_check_decl"; then
+    ac_compile="$ac_compile_for_check_decl"
+  fi
+  as_lineno=${as_lineno-"$1"} as_lineno_stack=as_lineno_stack=$as_lineno_stack
+  as_decl_name=`echo $2|sed 's/ *(.*//'`
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether $as_decl_name is declared" >&5
+printf %s "checking whether $as_decl_name is declared... " >&6; }
+if eval test \${$3+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) as_decl_use=`echo $2|sed -e 's/(/((/' -e 's/)/) 0&/' -e 's/,/) 0& (/g'`
+  eval ac_save_FLAGS=\$$6
+  as_fn_append $6 " $5"
+  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+$4
+int
+main (void)
+{
+#ifndef $as_decl_name
+#ifdef __cplusplus
+  (void) $as_decl_use;
+#else
+  (void) $as_decl_name;
+#endif
+#endif
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  eval "$3=yes"
+else case e in #(
+  e) eval "$3=no" ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
+  eval $6=\$ac_save_FLAGS
+ ;;
+esac
+fi
+eval ac_res=\$$3
+	       { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_res" >&5
+printf "%s\n" "$ac_res" >&6; }
+  eval $as_lineno_stack; ${as_lineno_stack:+:} unset as_lineno
+  ac_compile="$ac_saved_ac_compile"
+
+} # ac_fn_check_decl
 ac_configure_args_raw=
 for ac_arg
 do
@@ -8595,6 +8599,103 @@ printf "%s\n" "$gl_cv_test_UINT64_MAX_EQ_ULONG_MAX" >&6; }
 
 
 
+ac_fn_c_check_type "$LINENO" "_Bool" "ac_cv_type__Bool" "$ac_includes_default"
+if test "x$ac_cv_type__Bool" = xyes
+then :
+
+printf "%s\n" "#define HAVE__BOOL 1" >>confdefs.h
+
+
+fi
+
+   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for stdbool.h that conforms to C99 or later" >&5
+printf %s "checking for stdbool.h that conforms to C99 or later... " >&6; }
+if test ${ac_cv_header_stdbool_h+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+#include <stdbool.h>
+
+             /* "true" and "false" should be usable in #if expressions and
+                integer constant expressions, and "bool" should be a valid
+                type name.
+
+                Although C99 requires bool, true, and false to be macros,
+                C23 and C++11 overrule that, so do not test for that.
+                Although C99 requires __bool_true_false_are_defined and
+                _Bool, C23 says they are obsolescent, so do not require
+                them.  */
+
+             #if !true
+               #error "'true' is not true"
+             #endif
+             #if true != 1
+               #error "'true' is not equal to 1"
+             #endif
+             char b[true == 1 ? 1 : -1];
+             char c[true];
+
+             #if false
+               #error "'false' is not false"
+             #endif
+             #if false != 0
+               #error "'false' is not equal to 0"
+             #endif
+             char d[false == 0 ? 1 : -1];
+
+             enum { e = false, f = true, g = false * true, h = true * 256 };
+
+             char i[(bool) 0.5 == true ? 1 : -1];
+             char j[(bool) 0.0 == false ? 1 : -1];
+             char k[sizeof (bool) > 0 ? 1 : -1];
+
+             struct sb { bool s: 1; bool t; } s;
+             char l[sizeof s.t > 0 ? 1 : -1];
+
+             /* The following fails for
+                HP aC++/ANSI C B3910B A.05.55 [Dec 04 2003]. */
+             bool m[h];
+             char n[sizeof m == h * sizeof m[0] ? 1 : -1];
+             char o[-1 - (bool) 0 < 0 ? 1 : -1];
+             /* Catch a bug in an HP-UX C compiler.  See
+                https://gcc.gnu.org/ml/gcc-patches/2003-12/msg02303.html
+                https://lists.gnu.org/r/bug-coreutils/2005-11/msg00161.html
+              */
+             bool p = true;
+             bool *pp = &p;
+
+int
+main (void)
+{
+
+             bool ps = &s;
+             *pp |= p;
+             *pp |= ! p;
+
+             /* Refer to every declared value, so they cannot be
+                discarded as unused.  */
+             return (!b + !c + !d + !e + !f + !g + !h + !i + !j + !k
+                     + !l + !m + !n + !o + !p + !pp + !ps);
+
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_c_try_compile "$LINENO"
+then :
+  ac_cv_header_stdbool_h=yes
+else case e in #(
+  e) ac_cv_header_stdbool_h=no ;;
+esac
+fi
+rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext ;;
+esac
+fi
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_header_stdbool_h" >&5
+printf "%s\n" "$ac_cv_header_stdbool_h" >&6; }
+
 
     NULLPTR_T_NEEDS_STDDEF=1;
   STDDEF_NOT_IDEMPOTENT=0;
@@ -10936,6 +11037,67 @@ printf "%s\n" "$gl_cv_c_bool" >&6; }
 printf "%s\n" "#define HAVE_C_BOOL 1" >>confdefs.h
 
   fi
+
+
+
+
+
+
+
+
+
+          if test "$ac_cv_header_stdbool_h" = yes; then
+    case "$host_os" in
+      solaris*)
+        if test -z "$GCC"; then
+          GL_GENERATE_STDBOOL_H=true
+        else
+          GL_GENERATE_STDBOOL_H=false
+        fi
+        ;;
+      *)
+        GL_GENERATE_STDBOOL_H=false
+        ;;
+    esac
+  else
+    GL_GENERATE_STDBOOL_H=true
+  fi
+
+  if test "$ac_cv_type__Bool" = yes; then
+    HAVE__BOOL=1
+  else
+    HAVE__BOOL=0
+  fi
+
+
+
+
+
+
+  case "$GL_GENERATE_STDBOOL_H" in
+    false) STDBOOL_H='' ;;
+    true)
+                  if test -z "$STDBOOL_H"; then
+        STDBOOL_H="${gl_source_base_prefix}stdbool.h"
+      fi
+      ;;
+    *) echo "*** GL_GENERATE_STDBOOL_H is not set correctly" 1>&2; exit 1 ;;
+  esac
+
+
+     if $GL_GENERATE_STDBOOL_H; then
+  GL_GENERATE_STDBOOL_H_TRUE=
+  GL_GENERATE_STDBOOL_H_FALSE='#'
+else
+  GL_GENERATE_STDBOOL_H_TRUE='#'
+  GL_GENERATE_STDBOOL_H_FALSE=
+fi
+:
+    if test -z "${GL_GENERATE_STDBOOL_H_TRUE}" && test -z "${GL_GENERATE_STDBOOL_H_FALSE}"; then
+    GL_GENERATE_STDBOOL_H_TRUE='#'
+    GL_GENERATE_STDBOOL_H_FALSE='#'
+  fi
+
 
 
 

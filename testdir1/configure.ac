@@ -57,6 +57,9 @@ gl_m4_base='glm4'
   gl_MULTIARCH
   gt_TYPE_SSIZE_T
   gl_C_BOOL
+  gl_STDBOOL_H
+  gl_CONDITIONAL_HEADER([stdbool.h])
+  AC_PROG_MKDIR_P
   gl_STDDEF_H
   gl_STDDEF_H_REQUIRE_DEFAULTS
   gl_CONDITIONAL_HEADER([stddef.h])

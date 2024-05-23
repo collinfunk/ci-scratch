@@ -173,6 +173,14 @@ EXTRA_DIST += warn-on-use.h
 
 ## end   gnulib module snippet/warn-on-use
 
+## begin gnulib module stdbool-c99-tests
+
+TESTS += test-stdbool-c99
+noinst_PROGRAMS += test-stdbool-c99
+EXTRA_DIST += test-stdbool-c99.c test-stdbool.c
+
+## end   gnulib module stdbool-c99-tests
+
 ## begin gnulib module stdbool-tests
 
 TESTS += test-stdbool

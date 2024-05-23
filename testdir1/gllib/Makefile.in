@@ -128,8 +128,9 @@ am__aclocal_m4_deps = $(top_srcdir)/glm4/00gnulib.m4 \
 	$(top_srcdir)/glm4/locale-fr.m4 \
 	$(top_srcdir)/glm4/multiarch.m4 $(top_srcdir)/glm4/off64_t.m4 \
 	$(top_srcdir)/glm4/off_t.m4 $(top_srcdir)/glm4/ssize_t.m4 \
-	$(top_srcdir)/glm4/stdalign.m4 $(top_srcdir)/glm4/stddef_h.m4 \
-	$(top_srcdir)/glm4/stdint.m4 $(top_srcdir)/glm4/stdlib_h.m4 \
+	$(top_srcdir)/glm4/stdalign.m4 $(top_srcdir)/glm4/stdbool.m4 \
+	$(top_srcdir)/glm4/stddef_h.m4 $(top_srcdir)/glm4/stdint.m4 \
+	$(top_srcdir)/glm4/stdlib_h.m4 \
 	$(top_srcdir)/glm4/sys_types_h.m4 \
 	$(top_srcdir)/glm4/unistd_h.m4 \
 	$(top_srcdir)/glm4/warn-on-use.m4 \
@@ -663,6 +664,7 @@ HAVE_WMEMCPY = @HAVE_WMEMCPY@
 HAVE_WMEMMOVE = @HAVE_WMEMMOVE@
 HAVE_WMEMPCPY = @HAVE_WMEMPCPY@
 HAVE_WMEMSET = @HAVE_WMEMSET@
+HAVE__BOOL = @HAVE__BOOL@
 HAVE__EXIT = @HAVE__EXIT@
 INCLUDE_NEXT = @INCLUDE_NEXT@
 INCLUDE_NEXT_AS_FIRST_DIRECTIVE = @INCLUDE_NEXT_AS_FIRST_DIRECTIVE@
@@ -843,6 +845,7 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 SIG_ATOMIC_T_SUFFIX = @SIG_ATOMIC_T_SUFFIX@
 SIZE_T_SUFFIX = @SIZE_T_SUFFIX@
+STDBOOL_H = @STDBOOL_H@
 STDDEF_H = @STDDEF_H@
 STDDEF_NOT_IDEMPOTENT = @STDDEF_NOT_IDEMPOTENT@
 STDINT_H = @STDINT_H@
@@ -920,17 +923,17 @@ noinst_LTLIBRARIES =
 pkgdata_DATA = 
 EXTRA_DIST = assert.in.h verify.h intprops-internal.h intprops.h \
 	inttypes.in.h limits.in.h _Noreturn.h arg-nonnull.h c++defs.h \
-	warn-on-use.h stddef.in.h stdint.in.h stdlib.in.h \
+	warn-on-use.h stdbool.in.h stddef.in.h stdint.in.h stdlib.in.h \
 	sys_types.in.h unistd.in.h verify.h wchar.in.h
-BUILT_SOURCES = $(ASSERT_H) inttypes.h $(LIMITS_H) $(STDDEF_H) \
-	$(STDINT_H) stdlib.h sys/types.h unistd.h wchar.h
+BUILT_SOURCES = $(ASSERT_H) inttypes.h $(LIMITS_H) $(STDBOOL_H) \
+	$(STDDEF_H) $(STDINT_H) stdlib.h sys/types.h unistd.h wchar.h
 SUFFIXES = 
 MOSTLYCLEANFILES = core *.stackdump assert.h assert.h-t inttypes.h \
-	inttypes.h-t limits.h limits.h-t stddef.h stddef.h-t stdint.h \
-	stdint.h-t stdlib.h stdlib.h-t1 stdlib.h-t2 stdlib.h-t3 \
-	sys/types.h sys/types.h-t unistd.h unistd.h-t1 unistd.h-t2 \
-	unistd.h-t3 unistd.h-t4 wchar.h wchar.h-t1 wchar.h-t2 \
-	wchar.h-t3
+	inttypes.h-t limits.h limits.h-t stdbool.h stdbool.h-t \
+	stddef.h stddef.h-t stdint.h stdint.h-t stdlib.h stdlib.h-t1 \
+	stdlib.h-t2 stdlib.h-t3 sys/types.h sys/types.h-t unistd.h \
+	unistd.h-t1 unistd.h-t2 unistd.h-t3 unistd.h-t4 wchar.h \
+	wchar.h-t1 wchar.h-t2 wchar.h-t3
 MOSTLYCLEANDIRS = 
 CLEANFILES = 
 DISTCLEANFILES = 
@@ -1451,6 +1454,16 @@ inttypes.h: inttypes.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_U
 @GL_GENERATE_LIMITS_H_TRUE@	$(AM_V_at)mv $@-t $@
 @GL_GENERATE_LIMITS_H_FALSE@limits.h: $(top_builddir)/config.status
 @GL_GENERATE_LIMITS_H_FALSE@	rm -f $@
+
+# We need the following in order to create <stdbool.h> when the system
+# doesn't have one that works.
+@GL_GENERATE_STDBOOL_H_TRUE@stdbool.h: stdbool.in.h $(top_builddir)/config.status
+@GL_GENERATE_STDBOOL_H_TRUE@	$(gl_V_at)$(SED_HEADER_STDOUT) \
+@GL_GENERATE_STDBOOL_H_TRUE@	  -e 's/@''HAVE__BOOL''@/$(HAVE__BOOL)/g' \
+@GL_GENERATE_STDBOOL_H_TRUE@	  $(srcdir)/stdbool.in.h > $@-t
+@GL_GENERATE_STDBOOL_H_TRUE@	$(AM_V_at)mv $@-t $@
+@GL_GENERATE_STDBOOL_H_FALSE@stdbool.h: $(top_builddir)/config.status
+@GL_GENERATE_STDBOOL_H_FALSE@	rm -f $@
 
 # We need the following in order to create <stddef.h> when the system
 # doesn't have one that works with the given compiler.

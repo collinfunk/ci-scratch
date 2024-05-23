@@ -115,16 +115,17 @@ build_triplet = @build@
 host_triplet = @host@
 TESTS = test-alignasof$(EXEEXT) test-assert$(EXEEXT) test-getppid.sh \
 	test-intprops$(EXEEXT) test-inttypes$(EXEEXT) \
-	test-limits-h$(EXEEXT) test-stdbool$(EXEEXT) \
-	test-stddef$(EXEEXT) test-stdint$(EXEEXT) test-stdlib$(EXEEXT) \
+	test-limits-h$(EXEEXT) test-stdbool-c99$(EXEEXT) \
+	test-stdbool$(EXEEXT) test-stddef$(EXEEXT) \
+	test-stdint$(EXEEXT) test-stdlib$(EXEEXT) \
 	test-sys_types$(EXEEXT) test-init.sh test-unistd$(EXEEXT) \
 	test-verify$(EXEEXT) test-verify.sh test-wchar$(EXEEXT)
 XFAIL_TESTS =
 noinst_PROGRAMS = test-alignasof$(EXEEXT) test-assert$(EXEEXT) \
 	test-getppid$(EXEEXT) test-intprops$(EXEEXT) \
 	test-inttypes$(EXEEXT) test-limits-h$(EXEEXT) \
-	test-stdbool$(EXEEXT) test-stddef$(EXEEXT) \
-	test-stdint$(EXEEXT) test-stdlib$(EXEEXT) \
+	test-stdbool-c99$(EXEEXT) test-stdbool$(EXEEXT) \
+	test-stddef$(EXEEXT) test-stdint$(EXEEXT) test-stdlib$(EXEEXT) \
 	test-sys_types$(EXEEXT) test-unistd$(EXEEXT) \
 	test-verify$(EXEEXT) test-wchar$(EXEEXT)
 EXTRA_PROGRAMS = test-verify-try$(EXEEXT)
@@ -148,6 +149,7 @@ am__aclocal_m4_deps = $(top_srcdir)/../glm4/00gnulib.m4 \
 	$(top_srcdir)/../glm4/off_t.m4 \
 	$(top_srcdir)/../glm4/ssize_t.m4 \
 	$(top_srcdir)/../glm4/stdalign.m4 \
+	$(top_srcdir)/../glm4/stdbool.m4 \
 	$(top_srcdir)/../glm4/stddef_h.m4 \
 	$(top_srcdir)/../glm4/stdint.m4 \
 	$(top_srcdir)/../glm4/stdlib_h.m4 \
@@ -198,6 +200,10 @@ test_stdbool_SOURCES = test-stdbool.c
 test_stdbool_OBJECTS = test-stdbool.$(OBJEXT)
 test_stdbool_LDADD = $(LDADD)
 test_stdbool_DEPENDENCIES = ../gllib/libgnu.a
+test_stdbool_c99_SOURCES = test-stdbool-c99.c
+test_stdbool_c99_OBJECTS = test-stdbool-c99.$(OBJEXT)
+test_stdbool_c99_LDADD = $(LDADD)
+test_stdbool_c99_DEPENDENCIES = ../gllib/libgnu.a
 test_stddef_SOURCES = test-stddef.c
 test_stddef_OBJECTS = test-stddef.$(OBJEXT)
 test_stddef_LDADD = $(LDADD)
@@ -248,11 +254,12 @@ am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ./$(DEPDIR)/test-alignasof.Po \
 	./$(DEPDIR)/test-assert.Po ./$(DEPDIR)/test-getppid.Po \
 	./$(DEPDIR)/test-intprops.Po ./$(DEPDIR)/test-inttypes.Po \
-	./$(DEPDIR)/test-limits-h.Po ./$(DEPDIR)/test-stdbool.Po \
-	./$(DEPDIR)/test-stddef.Po ./$(DEPDIR)/test-stdint.Po \
-	./$(DEPDIR)/test-stdlib.Po ./$(DEPDIR)/test-sys_types.Po \
-	./$(DEPDIR)/test-unistd.Po ./$(DEPDIR)/test-verify-try.Po \
-	./$(DEPDIR)/test-verify.Po ./$(DEPDIR)/test-wchar.Po
+	./$(DEPDIR)/test-limits-h.Po ./$(DEPDIR)/test-stdbool-c99.Po \
+	./$(DEPDIR)/test-stdbool.Po ./$(DEPDIR)/test-stddef.Po \
+	./$(DEPDIR)/test-stdint.Po ./$(DEPDIR)/test-stdlib.Po \
+	./$(DEPDIR)/test-sys_types.Po ./$(DEPDIR)/test-unistd.Po \
+	./$(DEPDIR)/test-verify-try.Po ./$(DEPDIR)/test-verify.Po \
+	./$(DEPDIR)/test-wchar.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -268,12 +275,14 @@ am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
 SOURCES = test-alignasof.c test-assert.c test-getppid.c \
 	test-intprops.c test-inttypes.c test-limits-h.c test-stdbool.c \
-	test-stddef.c test-stdint.c test-stdlib.c test-sys_types.c \
-	test-unistd.c test-verify.c test-verify-try.c test-wchar.c
+	test-stdbool-c99.c test-stddef.c test-stdint.c test-stdlib.c \
+	test-sys_types.c test-unistd.c test-verify.c test-verify-try.c \
+	test-wchar.c
 DIST_SOURCES = test-alignasof.c test-assert.c test-getppid.c \
 	test-intprops.c test-inttypes.c test-limits-h.c test-stdbool.c \
-	test-stddef.c test-stdint.c test-stdlib.c test-sys_types.c \
-	test-unistd.c test-verify.c test-verify-try.c test-wchar.c
+	test-stdbool-c99.c test-stddef.c test-stdint.c test-stdlib.c \
+	test-sys_types.c test-unistd.c test-verify.c test-verify-try.c \
+	test-wchar.c
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -958,6 +967,7 @@ HAVE_WMEMCPY = @HAVE_WMEMCPY@
 HAVE_WMEMMOVE = @HAVE_WMEMMOVE@
 HAVE_WMEMPCPY = @HAVE_WMEMPCPY@
 HAVE_WMEMSET = @HAVE_WMEMSET@
+HAVE__BOOL = @HAVE__BOOL@
 HAVE__EXIT = @HAVE__EXIT@
 INCLUDE_NEXT = @INCLUDE_NEXT@
 INCLUDE_NEXT_AS_FIRST_DIRECTIVE = @INCLUDE_NEXT_AS_FIRST_DIRECTIVE@
@@ -1138,6 +1148,7 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 SIG_ATOMIC_T_SUFFIX = @SIG_ATOMIC_T_SUFFIX@
 SIZE_T_SUFFIX = @SIZE_T_SUFFIX@
+STDBOOL_H = @STDBOOL_H@
 STDDEF_H = @STDDEF_H@
 STDDEF_NOT_IDEMPOTENT = @STDDEF_NOT_IDEMPOTENT@
 STDINT_H = @STDINT_H@
@@ -1217,10 +1228,11 @@ pkgdata_DATA =
 EXTRA_DIST = test-alignasof.c macros.h test-assert.c test-getppid.sh \
 	test-getppid.c signature.h macros.h test-intprops.c macros.h \
 	test-inttypes.c test-limits-h.c _Noreturn.h arg-nonnull.h \
-	c++defs.h warn-on-use.h test-stdbool.c test-stddef.c \
-	test-stdint.c test-stdlib.c test-sys_wait.h test-sys_types.c \
-	init.sh test-init.sh test-unistd.c test-verify.c \
-	test-verify-try.c test-verify.sh test-wchar.c
+	c++defs.h warn-on-use.h test-stdbool-c99.c test-stdbool.c \
+	test-stdbool.c test-stddef.c test-stdint.c test-stdlib.c \
+	test-sys_wait.h test-sys_types.c init.sh test-init.sh \
+	test-unistd.c test-verify.c test-verify-try.c test-verify.sh \
+	test-wchar.c
 BUILT_SOURCES = 
 SUFFIXES = 
 
@@ -1364,6 +1376,10 @@ test-stdbool$(EXEEXT): $(test_stdbool_OBJECTS) $(test_stdbool_DEPENDENCIES) $(EX
 	@rm -f test-stdbool$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_stdbool_OBJECTS) $(test_stdbool_LDADD) $(LIBS)
 
+test-stdbool-c99$(EXEEXT): $(test_stdbool_c99_OBJECTS) $(test_stdbool_c99_DEPENDENCIES) $(EXTRA_test_stdbool_c99_DEPENDENCIES) 
+	@rm -f test-stdbool-c99$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_stdbool_c99_OBJECTS) $(test_stdbool_c99_LDADD) $(LIBS)
+
 test-stddef$(EXEEXT): $(test_stddef_OBJECTS) $(test_stddef_DEPENDENCIES) $(EXTRA_test_stddef_DEPENDENCIES) 
 	@rm -f test-stddef$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_stddef_OBJECTS) $(test_stddef_LDADD) $(LIBS)
@@ -1408,6 +1424,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-intprops.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-inttypes.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-limits-h.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-stdbool-c99.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-stdbool.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-stddef.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-stdint.Po@am__quote@ # am--include-marker
@@ -1744,6 +1761,13 @@ test-inttypes.log: test-inttypes$(EXEEXT)
 test-limits-h.log: test-limits-h$(EXEEXT)
 	@p='test-limits-h$(EXEEXT)'; \
 	b='test-limits-h'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test-stdbool-c99.log: test-stdbool-c99$(EXEEXT)
+	@p='test-stdbool-c99$(EXEEXT)'; \
+	b='test-stdbool-c99'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
@@ -2092,6 +2116,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/test-intprops.Po
 	-rm -f ./$(DEPDIR)/test-inttypes.Po
 	-rm -f ./$(DEPDIR)/test-limits-h.Po
+	-rm -f ./$(DEPDIR)/test-stdbool-c99.Po
 	-rm -f ./$(DEPDIR)/test-stdbool.Po
 	-rm -f ./$(DEPDIR)/test-stddef.Po
 	-rm -f ./$(DEPDIR)/test-stdint.Po
@@ -2154,6 +2179,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/test-intprops.Po
 	-rm -f ./$(DEPDIR)/test-inttypes.Po
 	-rm -f ./$(DEPDIR)/test-limits-h.Po
+	-rm -f ./$(DEPDIR)/test-stdbool-c99.Po
 	-rm -f ./$(DEPDIR)/test-stdbool.Po
 	-rm -f ./$(DEPDIR)/test-stddef.Po
 	-rm -f ./$(DEPDIR)/test-stdint.Po

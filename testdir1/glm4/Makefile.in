@@ -101,8 +101,9 @@ am__aclocal_m4_deps = $(top_srcdir)/glm4/00gnulib.m4 \
 	$(top_srcdir)/glm4/locale-fr.m4 \
 	$(top_srcdir)/glm4/multiarch.m4 $(top_srcdir)/glm4/off64_t.m4 \
 	$(top_srcdir)/glm4/off_t.m4 $(top_srcdir)/glm4/ssize_t.m4 \
-	$(top_srcdir)/glm4/stdalign.m4 $(top_srcdir)/glm4/stddef_h.m4 \
-	$(top_srcdir)/glm4/stdint.m4 $(top_srcdir)/glm4/stdlib_h.m4 \
+	$(top_srcdir)/glm4/stdalign.m4 $(top_srcdir)/glm4/stdbool.m4 \
+	$(top_srcdir)/glm4/stddef_h.m4 $(top_srcdir)/glm4/stdint.m4 \
+	$(top_srcdir)/glm4/stdlib_h.m4 \
 	$(top_srcdir)/glm4/sys_types_h.m4 \
 	$(top_srcdir)/glm4/unistd_h.m4 \
 	$(top_srcdir)/glm4/warn-on-use.m4 \
@@ -517,6 +518,7 @@ HAVE_WMEMCPY = @HAVE_WMEMCPY@
 HAVE_WMEMMOVE = @HAVE_WMEMMOVE@
 HAVE_WMEMPCPY = @HAVE_WMEMPCPY@
 HAVE_WMEMSET = @HAVE_WMEMSET@
+HAVE__BOOL = @HAVE__BOOL@
 HAVE__EXIT = @HAVE__EXIT@
 INCLUDE_NEXT = @INCLUDE_NEXT@
 INCLUDE_NEXT_AS_FIRST_DIRECTIVE = @INCLUDE_NEXT_AS_FIRST_DIRECTIVE@
@@ -697,6 +699,7 @@ SET_MAKE = @SET_MAKE@
 SHELL = @SHELL@
 SIG_ATOMIC_T_SUFFIX = @SIG_ATOMIC_T_SUFFIX@
 SIZE_T_SUFFIX = @SIZE_T_SUFFIX@
+STDBOOL_H = @STDBOOL_H@
 STDDEF_H = @STDDEF_H@
 STDDEF_NOT_IDEMPOTENT = @STDDEF_NOT_IDEMPOTENT@
 STDINT_H = @STDINT_H@
@@ -770,9 +773,9 @@ EXTRA_DIST = 00gnulib.m4 absolute-header.m4 assert_h.m4 c-bool.m4 \
 	codeset.m4 extensions.m4 extern-inline.m4 getppid.m4 \
 	gnulib-common.m4 include_next.m4 inttypes.m4 limits-h.m4 \
 	locale-fr.m4 multiarch.m4 off64_t.m4 off_t.m4 pid_t.m4 \
-	ssize_t.m4 std-gnu11.m4 stdalign.m4 stddef_h.m4 stdint.m4 \
-	stdlib_h.m4 sys_types_h.m4 unistd_h.m4 warn-on-use.m4 \
-	wchar_h.m4 wchar_t.m4 wint_t.m4 zzgnulib.m4
+	ssize_t.m4 std-gnu11.m4 stdalign.m4 stdbool.m4 stddef_h.m4 \
+	stdint.m4 stdlib_h.m4 sys_types_h.m4 unistd_h.m4 \
+	warn-on-use.m4 wchar_h.m4 wchar_t.m4 wint_t.m4 zzgnulib.m4
 all: all-am
 
 .SUFFIXES:

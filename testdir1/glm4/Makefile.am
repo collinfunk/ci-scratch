@@ -21,6 +21,7 @@ EXTRA_DIST += pid_t.m4
 EXTRA_DIST += ssize_t.m4
 EXTRA_DIST += std-gnu11.m4
 EXTRA_DIST += stdalign.m4
+EXTRA_DIST += stdbool.m4
 EXTRA_DIST += stddef_h.m4
 EXTRA_DIST += stdint.m4
 EXTRA_DIST += stdlib_h.m4
