@@ -1,0 +1,11 @@
+configure eol=lf
+compile eol=lf
+config.guess eol=lf
+config.rpath eol=lf
+config.sub eol=lf
+depcomp eol=lf
+install-sh eol=lf
+missing eol=lf
+test-driver eol=lf
+
+*.tar.gz binary
