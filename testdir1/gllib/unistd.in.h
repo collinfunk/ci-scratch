@@ -1529,20 +1529,6 @@ _GL_CXXALIAS_SYS (getpid, pid_t, (void));
 _GL_CXXALIASWARN (getpid);
 #endif
 
-#if @GNULIB_GETPPID@
-/* Get the process id of the parent process.  */
-# if !@HAVE_GETPPID@
-_GL_FUNCDECL_SYS (getppid, pid_t, (void));
-# endif
-_GL_CXXALIAS_SYS (getppid, pid_t, (void));
-_GL_CXXALIASWARN (getppid);
-#elif defined GNULIB_POSIXCHECK
-# undef getppid
-# if HAVE_RAW_DECL_GETPPID
-_GL_WARN_ON_USE (getppid, "getppid is unportable - "
-                 "use gnulib module getppid for portability");
-# endif
-#endif
 
 #if @GNULIB_GETUSERSHELL@
 # if @REPLACE_GETUSERSHELL@

@@ -47,7 +47,7 @@ AC_DEFUN_ONCE([gl_UNISTD_H],
     faccessat fchdir
     fchownat fdatasync fsync ftruncate getcwd getdomainname getdtablesize
     getentropy getgroups gethostname getlogin getlogin_r getpagesize getpass
-    getppid getusershell setusershell endusershell
+    getusershell setusershell endusershell
     group_member isatty lchown link linkat lseek pipe pipe2 pread pwrite
     readlink readlinkat rmdir sethostname sleep symlink symlinkat
     truncate ttyname_r unlink unlinkat usleep])
@@ -114,7 +114,6 @@ AC_DEFUN([gl_UNISTD_H_REQUIRE_DEFAULTS],
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_GETPAGESIZE])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_GETPASS])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_GETPASS_GNU])
-    gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_GETPPID])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_GETUSERSHELL])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_GROUP_MEMBER])
     gl_MODULE_INDICATOR_INIT_VARIABLE([GNULIB_ISATTY])
@@ -191,7 +190,6 @@ AC_DEFUN([gl_UNISTD_H_DEFAULTS],
   HAVE_GETLOGIN=1;                   AC_SUBST([HAVE_GETLOGIN])
   HAVE_GETPAGESIZE=1;                AC_SUBST([HAVE_GETPAGESIZE])
   HAVE_GETPASS=1;                    AC_SUBST([HAVE_GETPASS])
-  HAVE_GETPPID=1;                    AC_SUBST([HAVE_GETPPID])
   HAVE_GROUP_MEMBER=1;               AC_SUBST([HAVE_GROUP_MEMBER])
   HAVE_LCHOWN=1;                     AC_SUBST([HAVE_LCHOWN])
   HAVE_LINK=1;                       AC_SUBST([HAVE_LINK])
