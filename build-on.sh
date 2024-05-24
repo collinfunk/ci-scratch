@@ -41,10 +41,10 @@ done
 cd testdir1 || exit 1
 
 # Bring the time stamps into an order that will not require autoconf, automake, etc. to run again.
-sleep 1; touch aclocal.m4
-sleep 1; touch configure
-sleep 1; touch config.h.in
-sleep 1; touch `find . -name Makefile.in -type f`
+sleep 2; touch aclocal.m4
+sleep 2; touch configure
+sleep 2; touch config.h.in
+sleep 2; touch `find . -name Makefile.in -type f`
 
 mkdir build
 cd build
