@@ -439,9 +439,6 @@ jobs:
     env:
       CYGWIN_NOWINPATH: 1
     steps:
-      - run: |
-          git config --global core.autocrlf false
-          git config --global core.eol lf
       # This is needed because we run a script stored in this repository.
       - uses: actions/checkout@v4
       # Doc: https://github.com/cygwin/cygwin-install-action
@@ -501,9 +498,6 @@ jobs:
     env:
       CYGWIN_NOWINPATH: 1
     steps:
-      - run: |
-          git config --global core.autocrlf false
-          git config --global core.eol lf
       # This is needed because we run a script stored in this repository.
       - uses: actions/checkout@v4
       # Doc: https://github.com/cygwin/cygwin-install-action
@@ -566,10 +560,6 @@ jobs:
         shell: C:\cygwin\bin\bash.exe -eo pipefail -o igncr '{0}'
     env:
       CYGWIN_NOWINPATH: 1
-    steps:
-      - run: |
-          git config --global core.autocrlf false
-          git config --global core.eol lf
       # This is needed because we run a script stored in this repository.
       - uses: actions/checkout@v4
       # Doc: https://github.com/ilammy/msvc-dev-cmd
