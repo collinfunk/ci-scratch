@@ -687,7 +687,7 @@ read_utmp_from_file (char const *file, idx_t *n_entries, STRUCT_UTMP **utmp_buf,
                       "", 0,
                       0, BOOT_TIME, boot_time, 0, 0, 0);
     }
-#endif
+# endif
 
   a = finish_utmp (a);
 
