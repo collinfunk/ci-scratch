@@ -178,6 +178,9 @@
 /* Define to 1 when the gnulib module getdtablesize should be tested. */
 #undef GNULIB_TEST_GETDTABLESIZE
 
+/* Define to 1 when the gnulib module getpagesize should be tested. */
+#undef GNULIB_TEST_GETPAGESIZE
+
 /* Define to 1 when the gnulib module getprogname should be tested. */
 #undef GNULIB_TEST_GETPROGNAME
 
@@ -285,6 +288,9 @@
 
 /* Define to 1 when the gnulib module strerror_r should be tested. */
 #undef GNULIB_TEST_STRERROR_R
+
+/* Define to 1 when the gnulib module strnlen should be tested. */
+#undef GNULIB_TEST_STRNLEN
 
 /* Define to 1 when the gnulib module symlink should be tested. */
 #undef GNULIB_TEST_SYMLINK
@@ -486,6 +492,10 @@
 /* Define to 1 if you have the declaration of 'strerror_r', and to 0 if you
    don't. */
 #undef HAVE_DECL_STRERROR_R
+
+/* Define to 1 if you have the declaration of 'strnlen', and to 0 if you
+   don't. */
+#undef HAVE_DECL_STRNLEN
 
 /* Define to 1 if you have the declaration of 'sysinfo', and to 0 if you
    don't. */
@@ -1126,6 +1136,9 @@
 /* Define to l, ll, u, ul, ull, etc., as suitable for constants of type
    'ptrdiff_t'. */
 #undef PTRDIFF_T_SUFFIX
+
+/* Define if the readutmp module should use the systemd login API. */
+#undef READUTMP_USE_SYSTEMD
 
 /* Define to 1 if stat needs help when passed a file name with a trailing
    slash */

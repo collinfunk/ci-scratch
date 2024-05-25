@@ -136,6 +136,13 @@ EXTRA_DIST += arpa_inet.in.h
 
 ## end   gnulib module arpa_inet
 
+## begin gnulib module array-mergesort
+
+
+EXTRA_DIST += array-mergesort.h
+
+## end   gnulib module array-mergesort
+
 ## begin gnulib module assert-h
 
 BUILT_SOURCES += $(ASSERT_H)
@@ -533,6 +540,14 @@ libgnu_a_SOURCES += getdtablesize.c
 endif
 
 ## end   gnulib module getdtablesize
+
+## begin gnulib module getpagesize
+
+if GL_COND_OBJ_GETPAGESIZE
+libgnu_a_SOURCES += getpagesize.c
+endif
+
+## end   gnulib module getpagesize
 
 ## begin gnulib module getprogname
 
@@ -1424,6 +1439,14 @@ endif
 
 ## end   gnulib module random_r
 
+## begin gnulib module readutmp
+
+libgnu_a_SOURCES += readutmp.c
+
+EXTRA_DIST += boot-time-aux.h readutmp.h
+
+## end   gnulib module readutmp
+
 ## begin gnulib module realloc-gnu
 
 
@@ -2248,6 +2271,14 @@ MOSTLYCLEANFILES += string.h string.h-t1 string.h-t2
 EXTRA_DIST += string.in.h
 
 ## end   gnulib module string
+
+## begin gnulib module strnlen
+
+if GL_COND_OBJ_STRNLEN
+libgnu_a_SOURCES += strnlen.c
+endif
+
+## end   gnulib module strnlen
 
 ## begin gnulib module symlink
 

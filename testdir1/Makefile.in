@@ -111,6 +111,7 @@ am__aclocal_m4_deps = $(top_srcdir)/glm4/00gnulib.m4 \
 	$(top_srcdir)/glm4/free.m4 $(top_srcdir)/glm4/fstat.m4 \
 	$(top_srcdir)/glm4/ftruncate.m4 $(top_srcdir)/glm4/getcwd.m4 \
 	$(top_srcdir)/glm4/getdtablesize.m4 \
+	$(top_srcdir)/glm4/getpagesize.m4 \
 	$(top_srcdir)/glm4/getprogname.m4 \
 	$(top_srcdir)/glm4/gettimeofday.m4 \
 	$(top_srcdir)/glm4/gnulib-common.m4 \
@@ -155,7 +156,8 @@ am__aclocal_m4_deps = $(top_srcdir)/glm4/00gnulib.m4 \
 	$(top_srcdir)/glm4/stdint.m4 $(top_srcdir)/glm4/stdio_h.m4 \
 	$(top_srcdir)/glm4/stdlib_h.m4 $(top_srcdir)/glm4/strerror.m4 \
 	$(top_srcdir)/glm4/strerror_r.m4 \
-	$(top_srcdir)/glm4/string_h.m4 $(top_srcdir)/glm4/symlink.m4 \
+	$(top_srcdir)/glm4/string_h.m4 $(top_srcdir)/glm4/strnlen.m4 \
+	$(top_srcdir)/glm4/symlink.m4 \
 	$(top_srcdir)/glm4/sys_cdefs_h.m4 \
 	$(top_srcdir)/glm4/sys_ioctl_h.m4 \
 	$(top_srcdir)/glm4/sys_select_h.m4 \
@@ -163,9 +165,10 @@ am__aclocal_m4_deps = $(top_srcdir)/glm4/00gnulib.m4 \
 	$(top_srcdir)/glm4/sys_stat_h.m4 \
 	$(top_srcdir)/glm4/sys_time_h.m4 \
 	$(top_srcdir)/glm4/sys_types_h.m4 \
-	$(top_srcdir)/glm4/sys_uio_h.m4 $(top_srcdir)/glm4/thread.m4 \
-	$(top_srcdir)/glm4/threadlib.m4 $(top_srcdir)/glm4/time.m4 \
-	$(top_srcdir)/glm4/time_h.m4 $(top_srcdir)/glm4/unistd_h.m4 \
+	$(top_srcdir)/glm4/sys_uio_h.m4 $(top_srcdir)/glm4/systemd.m4 \
+	$(top_srcdir)/glm4/thread.m4 $(top_srcdir)/glm4/threadlib.m4 \
+	$(top_srcdir)/glm4/time.m4 $(top_srcdir)/glm4/time_h.m4 \
+	$(top_srcdir)/glm4/unistd_h.m4 \
 	$(top_srcdir)/glm4/unlocked-io.m4 $(top_srcdir)/glm4/usleep.m4 \
 	$(top_srcdir)/glm4/warn-on-use.m4 \
 	$(top_srcdir)/glm4/wchar_h.m4 $(top_srcdir)/glm4/wchar_t.m4 \
@@ -1362,6 +1365,7 @@ PTHREAD_H_DEFINES_STRUCT_TIMESPEC = @PTHREAD_H_DEFINES_STRUCT_TIMESPEC@
 PTHREAD_SIGMASK_LIB = @PTHREAD_SIGMASK_LIB@
 PTRDIFF_T_SUFFIX = @PTRDIFF_T_SUFFIX@
 RANLIB = @RANLIB@
+READUTMP_LIB = @READUTMP_LIB@
 REPLACE_ABORT = @REPLACE_ABORT@
 REPLACE_ACCESS = @REPLACE_ACCESS@
 REPLACE_ACOSF = @REPLACE_ACOSF@
@@ -1727,6 +1731,7 @@ STDDEF_H = @STDDEF_H@
 STDDEF_NOT_IDEMPOTENT = @STDDEF_NOT_IDEMPOTENT@
 STDINT_H = @STDINT_H@
 STRIP = @STRIP@
+SYSTEMD_CHOICE = @SYSTEMD_CHOICE@
 SYS_IOCTL_H_HAVE_WINSOCK2_H = @SYS_IOCTL_H_HAVE_WINSOCK2_H@
 SYS_IOCTL_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS = @SYS_IOCTL_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS@
 SYS_TIME_H_DEFINES_STRUCT_TIMESPEC = @SYS_TIME_H_DEFINES_STRUCT_TIMESPEC@

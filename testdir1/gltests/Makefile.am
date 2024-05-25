@@ -91,6 +91,14 @@ EXTRA_DIST += test-arpa_inet.c
 
 ## end   gnulib module arpa_inet-tests
 
+## begin gnulib module array-mergesort-tests
+
+TESTS += test-array-mergesort
+noinst_PROGRAMS += test-array-mergesort
+EXTRA_DIST += test-array-mergesort.c macros.h
+
+## end   gnulib module array-mergesort-tests
+
 ## begin gnulib module assert-h-tests
 
 TESTS += test-assert
@@ -621,6 +629,15 @@ EXTRA_DIST += test-random_r.c signature.h macros.h
 
 ## end   gnulib module random_r-tests
 
+## begin gnulib module readutmp-tests
+
+TESTS += test-readutmp
+noinst_PROGRAMS += test-readutmp
+test_readutmp_LDADD = $(LDADD) @READUTMP_LIB@ $(LIBINTL)
+EXTRA_DIST += test-readutmp.c macros.h
+
+## end   gnulib module readutmp-tests
+
 ## begin gnulib module realloc-gnu-tests
 
 TESTS += test-realloc-gnu
@@ -846,6 +863,14 @@ EXTRA_DIST += test-string.c
 
 ## end   gnulib module string-tests
 
+## begin gnulib module strnlen-tests
+
+TESTS += test-strnlen
+noinst_PROGRAMS += test-strnlen
+EXTRA_DIST += test-strnlen.c zerosize-ptr.h signature.h macros.h
+
+## end   gnulib module strnlen-tests
+
 ## begin gnulib module symlink-tests
 
 TESTS += test-symlink
@@ -1001,6 +1026,14 @@ test_xalloc_die_LDADD = $(LDADD) @LIBINTL@
 EXTRA_DIST += test-xalloc-die.c test-xalloc-die.sh
 
 ## end   gnulib module xalloc-die-tests
+
+## begin gnulib module year2038-tests
+
+TESTS += test-year2038
+noinst_PROGRAMS += test-year2038
+EXTRA_DIST += test-year2038.c
+
+## end   gnulib module year2038-tests
 
 all: all-notice
 all-notice:

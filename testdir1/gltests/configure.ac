@@ -19,6 +19,7 @@ gl_ANYTHREADLIB_EARLY
 gl_STDIO_H_EARLY
 AC_USE_SYSTEM_EXTENSIONS
 gl_THREADLIB_EARLY
+AC_SYS_YEAR2038
 AM_CONDITIONAL([GL_COND_LIBTOOL], [false])
 gl_cond_libtool=false
 gl_libdeps=
@@ -150,6 +151,9 @@ gl_m4_base='../glm4'
     gl_PREREQ_GETDTABLESIZE
   ])
   gl_UNISTD_MODULE_INDICATOR([getdtablesize])
+  gl_FUNC_GETPAGESIZE
+  gl_CONDITIONAL([GL_COND_OBJ_GETPAGESIZE], [test $REPLACE_GETPAGESIZE = 1])
+  gl_UNISTD_MODULE_INDICATOR([getpagesize])
   gl_FUNC_GETPROGNAME
   gl_CONDITIONAL([GL_COND_OBJ_GETPROGNAME],
                  [test $HAVE_GETPROGNAME = 0 || test $REPLACE_GETPROGNAME = 1])
@@ -304,6 +308,7 @@ gl_m4_base='../glm4'
     gl_PREREQ_RANDOM_R
   ])
   gl_STDLIB_MODULE_INDICATOR([random_r])
+  gl_READUTMP
   gl_FUNC_REALLOC_GNU
   if test $REPLACE_REALLOC_FOR_REALLOC_GNU = 1; then
     AC_LIBOBJ([realloc])
@@ -454,6 +459,13 @@ gl_m4_base='../glm4'
   gl_STRING_H
   gl_STRING_H_REQUIRE_DEFAULTS
   AC_PROG_MKDIR_P
+  gl_FUNC_STRNLEN
+  gl_CONDITIONAL([GL_COND_OBJ_STRNLEN],
+                 [test $HAVE_DECL_STRNLEN = 0 || test $REPLACE_STRNLEN = 1])
+  AM_COND_IF([GL_COND_OBJ_STRNLEN], [
+    gl_PREREQ_STRNLEN
+  ])
+  gl_STRING_MODULE_INDICATOR([strnlen])
   gl_FUNC_SYMLINK
   gl_CONDITIONAL([GL_COND_OBJ_SYMLINK],
                  [test $HAVE_SYMLINK = 0 || test $REPLACE_SYMLINK = 1])
@@ -545,6 +557,10 @@ gl_m4_base='../glm4'
   AC_REQUIRE([gt_TYPE_WCHAR_T])
   AC_REQUIRE([gt_TYPE_WINT_T])
   gl_DOUBLE_EXPONENT_LOCATION
+  dnl Check for prerequisites for memory fence checks.
+  gl_FUNC_MMAP_ANON
+  AC_CHECK_HEADERS_ONCE([sys/mman.h])
+  AC_CHECK_FUNCS_ONCE([mprotect])
   AC_CHECK_FUNCS_ONCE([shutdown])
   m4_ifval(gl_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gl_LIBSOURCES_DIR])[ ||

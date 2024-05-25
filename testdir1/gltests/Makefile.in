@@ -115,15 +115,16 @@ build_triplet = @build@
 host_triplet = @host@
 TESTS = test-accept$(EXEEXT) test-alignasof$(EXEEXT) \
 	test-alloca-opt$(EXEEXT) test-arpa_inet$(EXEEXT) \
-	test-assert$(EXEEXT) test-binary-io.sh test-bind$(EXEEXT) \
-	test-boot-time$(EXEEXT) test-c-ctype$(EXEEXT) \
-	test-calloc-gnu$(EXEEXT) test-cloexec$(EXEEXT) \
-	test-close$(EXEEXT) test-connect$(EXEEXT) test-ctype$(EXEEXT) \
-	test-dup2$(EXEEXT) test-environ$(EXEEXT) test-errno$(EXEEXT) \
-	test-error.sh test-fcntl-h$(EXEEXT) test-fcntl$(EXEEXT) \
-	test-fdopen$(EXEEXT) test-fgetc$(EXEEXT) test-float$(EXEEXT) \
-	test-fputc$(EXEEXT) test-fread$(EXEEXT) test-free$(EXEEXT) \
-	test-fstat$(EXEEXT) test-ftruncate.sh test-fwrite$(EXEEXT) \
+	test-array-mergesort$(EXEEXT) test-assert$(EXEEXT) \
+	test-binary-io.sh test-bind$(EXEEXT) test-boot-time$(EXEEXT) \
+	test-c-ctype$(EXEEXT) test-calloc-gnu$(EXEEXT) \
+	test-cloexec$(EXEEXT) test-close$(EXEEXT) \
+	test-connect$(EXEEXT) test-ctype$(EXEEXT) test-dup2$(EXEEXT) \
+	test-environ$(EXEEXT) test-errno$(EXEEXT) test-error.sh \
+	test-fcntl-h$(EXEEXT) test-fcntl$(EXEEXT) test-fdopen$(EXEEXT) \
+	test-fgetc$(EXEEXT) test-float$(EXEEXT) test-fputc$(EXEEXT) \
+	test-fread$(EXEEXT) test-free$(EXEEXT) test-fstat$(EXEEXT) \
+	test-ftruncate.sh test-fwrite$(EXEEXT) \
 	test-getcwd-lgpl$(EXEEXT) test-getdtablesize$(EXEEXT) \
 	test-getprogname$(EXEEXT) test-gettimeofday$(EXEEXT) \
 	test-ignore-value$(EXEEXT) test-inet_pton$(EXEEXT) \
@@ -143,48 +144,49 @@ TESTS = test-accept$(EXEEXT) test-alignasof$(EXEEXT) \
 	test-pthread_sigmask2$(EXEEXT) test-putenv$(EXEEXT) \
 	test-raise$(EXEEXT) test-random$(EXEEXT) \
 	test-random-mt$(EXEEXT) test-random_r$(EXEEXT) \
-	test-realloc-gnu$(EXEEXT) test-reallocarray$(EXEEXT) \
-	test-sched$(EXEEXT) test-select$(EXEEXT) test-select-in.sh \
-	test-select-out.sh test-setsockopt$(EXEEXT) \
-	test-signal-h$(EXEEXT) test-signbit$(EXEEXT) \
-	test-sigprocmask$(EXEEXT) test-sleep$(EXEEXT) \
-	test-sockets$(EXEEXT) test-stat$(EXEEXT) \
+	test-readutmp$(EXEEXT) test-realloc-gnu$(EXEEXT) \
+	test-reallocarray$(EXEEXT) test-sched$(EXEEXT) \
+	test-select$(EXEEXT) test-select-in.sh test-select-out.sh \
+	test-setsockopt$(EXEEXT) test-signal-h$(EXEEXT) \
+	test-signbit$(EXEEXT) test-sigprocmask$(EXEEXT) \
+	test-sleep$(EXEEXT) test-sockets$(EXEEXT) test-stat$(EXEEXT) \
 	test-stat-time$(EXEEXT) test-stdbool$(EXEEXT) \
 	test-stdckdint$(EXEEXT) test-stddef$(EXEEXT) \
 	test-stdint$(EXEEXT) test-stdio$(EXEEXT) test-stdlib$(EXEEXT) \
 	test-strerror$(EXEEXT) test-strerror_r$(EXEEXT) \
-	test-string$(EXEEXT) test-symlink$(EXEEXT) \
-	test-sys_ioctl$(EXEEXT) test-sys_select$(EXEEXT) \
-	test-sys_socket$(EXEEXT) test-sys_stat$(EXEEXT) \
-	test-sys_time$(EXEEXT) test-sys_types$(EXEEXT) \
-	test-sys_uio$(EXEEXT) test-init.sh test-thread_self$(EXEEXT) \
-	test-thread_create$(EXEEXT) test-time-h$(EXEEXT) \
-	test-time$(EXEEXT) test-unistd$(EXEEXT) test-unsetenv$(EXEEXT) \
-	test-usleep$(EXEEXT) test-verify$(EXEEXT) test-verify.sh \
-	test-wchar$(EXEEXT) test-xalloc-die.sh
+	test-string$(EXEEXT) test-strnlen$(EXEEXT) \
+	test-symlink$(EXEEXT) test-sys_ioctl$(EXEEXT) \
+	test-sys_select$(EXEEXT) test-sys_socket$(EXEEXT) \
+	test-sys_stat$(EXEEXT) test-sys_time$(EXEEXT) \
+	test-sys_types$(EXEEXT) test-sys_uio$(EXEEXT) test-init.sh \
+	test-thread_self$(EXEEXT) test-thread_create$(EXEEXT) \
+	test-time-h$(EXEEXT) test-time$(EXEEXT) test-unistd$(EXEEXT) \
+	test-unsetenv$(EXEEXT) test-usleep$(EXEEXT) \
+	test-verify$(EXEEXT) test-verify.sh test-wchar$(EXEEXT) \
+	test-xalloc-die.sh test-year2038$(EXEEXT)
 XFAIL_TESTS =
 noinst_PROGRAMS = test-accept$(EXEEXT) test-alignasof$(EXEEXT) \
 	test-alloca-opt$(EXEEXT) test-arpa_inet$(EXEEXT) \
-	test-assert$(EXEEXT) test-binary-io$(EXEEXT) \
-	test-bind$(EXEEXT) test-boot-time$(EXEEXT) \
-	test-c-ctype$(EXEEXT) test-calloc-gnu$(EXEEXT) \
-	test-cloexec$(EXEEXT) test-close$(EXEEXT) \
-	test-connect$(EXEEXT) test-ctype$(EXEEXT) test-dup2$(EXEEXT) \
-	test-environ$(EXEEXT) test-errno$(EXEEXT) test-error$(EXEEXT) \
-	test-fcntl-h$(EXEEXT) test-fcntl$(EXEEXT) test-fdopen$(EXEEXT) \
-	test-fgetc$(EXEEXT) test-float$(EXEEXT) test-fputc$(EXEEXT) \
-	test-fread$(EXEEXT) test-free$(EXEEXT) test-fstat$(EXEEXT) \
-	test-ftruncate$(EXEEXT) test-fwrite$(EXEEXT) \
-	test-getcwd-lgpl$(EXEEXT) test-getdtablesize$(EXEEXT) \
-	test-getprogname$(EXEEXT) test-gettimeofday$(EXEEXT) \
-	test-ignore-value$(EXEEXT) test-inet_pton$(EXEEXT) \
-	test-intprops$(EXEEXT) test-inttypes$(EXEEXT) \
-	test-ioctl$(EXEEXT) test-isblank$(EXEEXT) \
-	test-isnand-nolibm$(EXEEXT) test-isnanf-nolibm$(EXEEXT) \
-	test-isnanl-nolibm$(EXEEXT) test-largefile$(EXEEXT) \
-	test-limits-h$(EXEEXT) test-listen$(EXEEXT) \
-	test-rwlock1$(EXEEXT) test-lock$(EXEEXT) test-once1$(EXEEXT) \
-	test-once2$(EXEEXT) test-lstat$(EXEEXT) \
+	test-array-mergesort$(EXEEXT) test-assert$(EXEEXT) \
+	test-binary-io$(EXEEXT) test-bind$(EXEEXT) \
+	test-boot-time$(EXEEXT) test-c-ctype$(EXEEXT) \
+	test-calloc-gnu$(EXEEXT) test-cloexec$(EXEEXT) \
+	test-close$(EXEEXT) test-connect$(EXEEXT) test-ctype$(EXEEXT) \
+	test-dup2$(EXEEXT) test-environ$(EXEEXT) test-errno$(EXEEXT) \
+	test-error$(EXEEXT) test-fcntl-h$(EXEEXT) test-fcntl$(EXEEXT) \
+	test-fdopen$(EXEEXT) test-fgetc$(EXEEXT) test-float$(EXEEXT) \
+	test-fputc$(EXEEXT) test-fread$(EXEEXT) test-free$(EXEEXT) \
+	test-fstat$(EXEEXT) test-ftruncate$(EXEEXT) \
+	test-fwrite$(EXEEXT) test-getcwd-lgpl$(EXEEXT) \
+	test-getdtablesize$(EXEEXT) test-getprogname$(EXEEXT) \
+	test-gettimeofday$(EXEEXT) test-ignore-value$(EXEEXT) \
+	test-inet_pton$(EXEEXT) test-intprops$(EXEEXT) \
+	test-inttypes$(EXEEXT) test-ioctl$(EXEEXT) \
+	test-isblank$(EXEEXT) test-isnand-nolibm$(EXEEXT) \
+	test-isnanf-nolibm$(EXEEXT) test-isnanl-nolibm$(EXEEXT) \
+	test-largefile$(EXEEXT) test-limits-h$(EXEEXT) \
+	test-listen$(EXEEXT) test-rwlock1$(EXEEXT) test-lock$(EXEEXT) \
+	test-once1$(EXEEXT) test-once2$(EXEEXT) test-lstat$(EXEEXT) \
 	test-malloc-gnu$(EXEEXT) test-malloca$(EXEEXT) \
 	test-math$(EXEEXT) test-nanosleep$(EXEEXT) \
 	test-netinet_in$(EXEEXT) test-open$(EXEEXT) \
@@ -194,25 +196,27 @@ noinst_PROGRAMS = test-accept$(EXEEXT) test-alignasof$(EXEEXT) \
 	test-pthread_sigmask1$(EXEEXT) test-pthread_sigmask2$(EXEEXT) \
 	test-putenv$(EXEEXT) test-raise$(EXEEXT) test-random$(EXEEXT) \
 	test-random-mt$(EXEEXT) test-random_r$(EXEEXT) \
-	test-realloc-gnu$(EXEEXT) test-reallocarray$(EXEEXT) \
-	test-sched$(EXEEXT) test-select$(EXEEXT) \
-	test-select-fd$(EXEEXT) test-select-stdin$(EXEEXT) \
-	test-setsockopt$(EXEEXT) test-signal-h$(EXEEXT) \
-	test-signbit$(EXEEXT) test-sigprocmask$(EXEEXT) \
-	test-sleep$(EXEEXT) test-sockets$(EXEEXT) test-stat$(EXEEXT) \
+	test-readutmp$(EXEEXT) test-realloc-gnu$(EXEEXT) \
+	test-reallocarray$(EXEEXT) test-sched$(EXEEXT) \
+	test-select$(EXEEXT) test-select-fd$(EXEEXT) \
+	test-select-stdin$(EXEEXT) test-setsockopt$(EXEEXT) \
+	test-signal-h$(EXEEXT) test-signbit$(EXEEXT) \
+	test-sigprocmask$(EXEEXT) test-sleep$(EXEEXT) \
+	test-sockets$(EXEEXT) test-stat$(EXEEXT) \
 	test-stat-time$(EXEEXT) test-stdbool$(EXEEXT) \
 	test-stdckdint$(EXEEXT) test-stddef$(EXEEXT) \
 	test-stdint$(EXEEXT) test-stdio$(EXEEXT) test-stdlib$(EXEEXT) \
 	test-strerror$(EXEEXT) test-strerror_r$(EXEEXT) \
-	test-string$(EXEEXT) test-symlink$(EXEEXT) \
-	test-sys_ioctl$(EXEEXT) test-sys_select$(EXEEXT) \
-	test-sys_socket$(EXEEXT) test-sys_stat$(EXEEXT) \
-	test-sys_time$(EXEEXT) test-sys_types$(EXEEXT) \
-	test-sys_uio$(EXEEXT) test-thread_self$(EXEEXT) \
-	test-thread_create$(EXEEXT) test-time-h$(EXEEXT) \
-	test-time$(EXEEXT) test-unistd$(EXEEXT) test-unsetenv$(EXEEXT) \
-	test-usleep$(EXEEXT) test-verify$(EXEEXT) test-wchar$(EXEEXT) \
-	test-xalloc-die$(EXEEXT)
+	test-string$(EXEEXT) test-strnlen$(EXEEXT) \
+	test-symlink$(EXEEXT) test-sys_ioctl$(EXEEXT) \
+	test-sys_select$(EXEEXT) test-sys_socket$(EXEEXT) \
+	test-sys_stat$(EXEEXT) test-sys_time$(EXEEXT) \
+	test-sys_types$(EXEEXT) test-sys_uio$(EXEEXT) \
+	test-thread_self$(EXEEXT) test-thread_create$(EXEEXT) \
+	test-time-h$(EXEEXT) test-time$(EXEEXT) test-unistd$(EXEEXT) \
+	test-unsetenv$(EXEEXT) test-usleep$(EXEEXT) \
+	test-verify$(EXEEXT) test-wchar$(EXEEXT) \
+	test-xalloc-die$(EXEEXT) test-year2038$(EXEEXT)
 EXTRA_PROGRAMS = test-verify-try$(EXEEXT)
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -247,6 +251,7 @@ am__aclocal_m4_deps = $(top_srcdir)/../glm4/00gnulib.m4 \
 	$(top_srcdir)/../glm4/ftruncate.m4 \
 	$(top_srcdir)/../glm4/getcwd.m4 \
 	$(top_srcdir)/../glm4/getdtablesize.m4 \
+	$(top_srcdir)/../glm4/getpagesize.m4 \
 	$(top_srcdir)/../glm4/getprogname.m4 \
 	$(top_srcdir)/../glm4/gettimeofday.m4 \
 	$(top_srcdir)/../glm4/gnulib-common.m4 \
@@ -266,6 +271,7 @@ am__aclocal_m4_deps = $(top_srcdir)/../glm4/00gnulib.m4 \
 	$(top_srcdir)/../glm4/malloca.m4 \
 	$(top_srcdir)/../glm4/math_h.m4 \
 	$(top_srcdir)/../glm4/minmax.m4 \
+	$(top_srcdir)/../glm4/mmap-anon.m4 \
 	$(top_srcdir)/../glm4/mode_t.m4 \
 	$(top_srcdir)/../glm4/msvc-inval.m4 \
 	$(top_srcdir)/../glm4/msvc-nothrow.m4 \
@@ -316,6 +322,7 @@ am__aclocal_m4_deps = $(top_srcdir)/../glm4/00gnulib.m4 \
 	$(top_srcdir)/../glm4/strerror.m4 \
 	$(top_srcdir)/../glm4/strerror_r.m4 \
 	$(top_srcdir)/../glm4/string_h.m4 \
+	$(top_srcdir)/../glm4/strnlen.m4 \
 	$(top_srcdir)/../glm4/symlink.m4 \
 	$(top_srcdir)/../glm4/sys_cdefs_h.m4 \
 	$(top_srcdir)/../glm4/sys_ioctl_h.m4 \
@@ -325,6 +332,7 @@ am__aclocal_m4_deps = $(top_srcdir)/../glm4/00gnulib.m4 \
 	$(top_srcdir)/../glm4/sys_time_h.m4 \
 	$(top_srcdir)/../glm4/sys_types_h.m4 \
 	$(top_srcdir)/../glm4/sys_uio_h.m4 \
+	$(top_srcdir)/../glm4/systemd.m4 \
 	$(top_srcdir)/../glm4/thread.m4 \
 	$(top_srcdir)/../glm4/threadlib.m4 \
 	$(top_srcdir)/../glm4/time.m4 $(top_srcdir)/../glm4/time_h.m4 \
@@ -364,6 +372,10 @@ test_arpa_inet_SOURCES = test-arpa_inet.c
 test_arpa_inet_OBJECTS = test-arpa_inet.$(OBJEXT)
 test_arpa_inet_LDADD = $(LDADD)
 test_arpa_inet_DEPENDENCIES = ../gllib/libgnu.a
+test_array_mergesort_SOURCES = test-array-mergesort.c
+test_array_mergesort_OBJECTS = test-array-mergesort.$(OBJEXT)
+test_array_mergesort_LDADD = $(LDADD)
+test_array_mergesort_DEPENDENCIES = ../gllib/libgnu.a
 test_assert_SOURCES = test-assert.c
 test_assert_OBJECTS = test-assert.$(OBJEXT)
 test_assert_LDADD = $(LDADD)
@@ -608,6 +620,9 @@ test_random_r_SOURCES = test-random_r.c
 test_random_r_OBJECTS = test-random_r.$(OBJEXT)
 test_random_r_LDADD = $(LDADD)
 test_random_r_DEPENDENCIES = ../gllib/libgnu.a
+test_readutmp_SOURCES = test-readutmp.c
+test_readutmp_OBJECTS = test-readutmp.$(OBJEXT)
+test_readutmp_DEPENDENCIES = $(LDADD) $(am__DEPENDENCIES_1)
 test_realloc_gnu_SOURCES = test-realloc-gnu.c
 test_realloc_gnu_OBJECTS = test-realloc-gnu.$(OBJEXT)
 test_realloc_gnu_LDADD = $(LDADD)
@@ -696,6 +711,10 @@ test_string_SOURCES = test-string.c
 test_string_OBJECTS = test-string.$(OBJEXT)
 test_string_LDADD = $(LDADD)
 test_string_DEPENDENCIES = ../gllib/libgnu.a
+test_strnlen_SOURCES = test-strnlen.c
+test_strnlen_OBJECTS = test-strnlen.$(OBJEXT)
+test_strnlen_LDADD = $(LDADD)
+test_strnlen_DEPENDENCIES = ../gllib/libgnu.a
 test_symlink_SOURCES = test-symlink.c
 test_symlink_OBJECTS = test-symlink.$(OBJEXT)
 test_symlink_LDADD = $(LDADD)
@@ -769,6 +788,10 @@ test_wchar_DEPENDENCIES = ../gllib/libgnu.a
 test_xalloc_die_SOURCES = test-xalloc-die.c
 test_xalloc_die_OBJECTS = test-xalloc-die.$(OBJEXT)
 test_xalloc_die_DEPENDENCIES = $(LDADD)
+test_year2038_SOURCES = test-year2038.c
+test_year2038_OBJECTS = test-year2038.$(OBJEXT)
+test_year2038_LDADD = $(LDADD)
+test_year2038_DEPENDENCIES = ../gllib/libgnu.a
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -786,7 +809,8 @@ depcomp = $(SHELL) $(top_srcdir)/../build-aux/depcomp
 am__maybe_remake_depfiles = depfiles
 am__depfiles_remade = ./$(DEPDIR)/test-accept.Po \
 	./$(DEPDIR)/test-alignasof.Po ./$(DEPDIR)/test-alloca-opt.Po \
-	./$(DEPDIR)/test-arpa_inet.Po ./$(DEPDIR)/test-assert.Po \
+	./$(DEPDIR)/test-arpa_inet.Po \
+	./$(DEPDIR)/test-array-mergesort.Po ./$(DEPDIR)/test-assert.Po \
 	./$(DEPDIR)/test-binary-io.Po ./$(DEPDIR)/test-bind.Po \
 	./$(DEPDIR)/test-boot-time.Po ./$(DEPDIR)/test-c-ctype.Po \
 	./$(DEPDIR)/test-calloc-gnu.Po ./$(DEPDIR)/test-cloexec.Po \
@@ -823,7 +847,8 @@ am__depfiles_remade = ./$(DEPDIR)/test-accept.Po \
 	./$(DEPDIR)/test-pthread_sigmask2.Po \
 	./$(DEPDIR)/test-putenv.Po ./$(DEPDIR)/test-raise.Po \
 	./$(DEPDIR)/test-random-mt.Po ./$(DEPDIR)/test-random.Po \
-	./$(DEPDIR)/test-random_r.Po ./$(DEPDIR)/test-realloc-gnu.Po \
+	./$(DEPDIR)/test-random_r.Po ./$(DEPDIR)/test-readutmp.Po \
+	./$(DEPDIR)/test-realloc-gnu.Po \
 	./$(DEPDIR)/test-reallocarray.Po ./$(DEPDIR)/test-rwlock1.Po \
 	./$(DEPDIR)/test-sched.Po ./$(DEPDIR)/test-select-fd.Po \
 	./$(DEPDIR)/test-select-stdin.Po ./$(DEPDIR)/test-select.Po \
@@ -835,16 +860,18 @@ am__depfiles_remade = ./$(DEPDIR)/test-accept.Po \
 	./$(DEPDIR)/test-stddef.Po ./$(DEPDIR)/test-stdint.Po \
 	./$(DEPDIR)/test-stdio.Po ./$(DEPDIR)/test-stdlib.Po \
 	./$(DEPDIR)/test-strerror.Po ./$(DEPDIR)/test-strerror_r.Po \
-	./$(DEPDIR)/test-string.Po ./$(DEPDIR)/test-symlink.Po \
-	./$(DEPDIR)/test-sys_ioctl.Po ./$(DEPDIR)/test-sys_select.Po \
-	./$(DEPDIR)/test-sys_socket.Po ./$(DEPDIR)/test-sys_stat.Po \
-	./$(DEPDIR)/test-sys_time.Po ./$(DEPDIR)/test-sys_types.Po \
-	./$(DEPDIR)/test-sys_uio.Po ./$(DEPDIR)/test-thread_create.Po \
+	./$(DEPDIR)/test-string.Po ./$(DEPDIR)/test-strnlen.Po \
+	./$(DEPDIR)/test-symlink.Po ./$(DEPDIR)/test-sys_ioctl.Po \
+	./$(DEPDIR)/test-sys_select.Po ./$(DEPDIR)/test-sys_socket.Po \
+	./$(DEPDIR)/test-sys_stat.Po ./$(DEPDIR)/test-sys_time.Po \
+	./$(DEPDIR)/test-sys_types.Po ./$(DEPDIR)/test-sys_uio.Po \
+	./$(DEPDIR)/test-thread_create.Po \
 	./$(DEPDIR)/test-thread_self.Po ./$(DEPDIR)/test-time-h.Po \
 	./$(DEPDIR)/test-time.Po ./$(DEPDIR)/test-unistd.Po \
 	./$(DEPDIR)/test-unsetenv.Po ./$(DEPDIR)/test-usleep.Po \
 	./$(DEPDIR)/test-verify-try.Po ./$(DEPDIR)/test-verify.Po \
-	./$(DEPDIR)/test-wchar.Po ./$(DEPDIR)/test-xalloc-die.Po
+	./$(DEPDIR)/test-wchar.Po ./$(DEPDIR)/test-xalloc-die.Po \
+	./$(DEPDIR)/test-year2038.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -859,16 +886,16 @@ am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
 am__v_CCLD_0 = @echo "  CCLD    " $@;
 am__v_CCLD_1 = 
 SOURCES = test-accept.c test-alignasof.c test-alloca-opt.c \
-	test-arpa_inet.c test-assert.c test-binary-io.c test-bind.c \
-	test-boot-time.c test-c-ctype.c test-calloc-gnu.c \
-	test-cloexec.c test-close.c test-connect.c test-ctype.c \
-	test-dup2.c test-environ.c test-errno.c test-error.c \
-	test-fcntl.c test-fcntl-h.c test-fdopen.c test-fgetc.c \
-	test-float.c test-fputc.c test-fread.c test-free.c \
-	test-fstat.c test-ftruncate.c test-fwrite.c test-getcwd-lgpl.c \
-	test-getdtablesize.c test-getprogname.c test-gettimeofday.c \
-	test-ignore-value.c test-inet_pton.c test-intprops.c \
-	test-inttypes.c test-ioctl.c test-isblank.c \
+	test-arpa_inet.c test-array-mergesort.c test-assert.c \
+	test-binary-io.c test-bind.c test-boot-time.c test-c-ctype.c \
+	test-calloc-gnu.c test-cloexec.c test-close.c test-connect.c \
+	test-ctype.c test-dup2.c test-environ.c test-errno.c \
+	test-error.c test-fcntl.c test-fcntl-h.c test-fdopen.c \
+	test-fgetc.c test-float.c test-fputc.c test-fread.c \
+	test-free.c test-fstat.c test-ftruncate.c test-fwrite.c \
+	test-getcwd-lgpl.c test-getdtablesize.c test-getprogname.c \
+	test-gettimeofday.c test-ignore-value.c test-inet_pton.c \
+	test-intprops.c test-inttypes.c test-ioctl.c test-isblank.c \
 	test-isnand-nolibm.c test-isnanf-nolibm.c test-isnanl-nolibm.c \
 	test-largefile.c test-limits-h.c test-listen.c test-lock.c \
 	test-lstat.c test-malloc-gnu.c test-malloca.c test-math.c \
@@ -877,31 +904,31 @@ SOURCES = test-accept.c test-alignasof.c test-alloca-opt.c \
 	test-perror2.c test-pipe.c test-pselect.c test-pthread.c \
 	test-pthread-thread.c test-pthread_sigmask1.c \
 	test-pthread_sigmask2.c test-putenv.c test-raise.c \
-	test-random.c test-random-mt.c test-random_r.c \
+	test-random.c test-random-mt.c test-random_r.c test-readutmp.c \
 	test-realloc-gnu.c test-reallocarray.c test-rwlock1.c \
 	test-sched.c test-select.c test-select-fd.c \
 	test-select-stdin.c test-setsockopt.c test-signal-h.c \
 	test-signbit.c test-sigprocmask.c test-sleep.c test-sockets.c \
 	test-stat.c test-stat-time.c test-stdbool.c test-stdckdint.c \
 	test-stddef.c test-stdint.c test-stdio.c test-stdlib.c \
-	test-strerror.c test-strerror_r.c test-string.c test-symlink.c \
-	test-sys_ioctl.c test-sys_select.c test-sys_socket.c \
-	test-sys_stat.c test-sys_time.c test-sys_types.c \
-	test-sys_uio.c test-thread_create.c test-thread_self.c \
-	test-time.c test-time-h.c test-unistd.c test-unsetenv.c \
-	test-usleep.c test-verify.c test-verify-try.c test-wchar.c \
-	test-xalloc-die.c
+	test-strerror.c test-strerror_r.c test-string.c test-strnlen.c \
+	test-symlink.c test-sys_ioctl.c test-sys_select.c \
+	test-sys_socket.c test-sys_stat.c test-sys_time.c \
+	test-sys_types.c test-sys_uio.c test-thread_create.c \
+	test-thread_self.c test-time.c test-time-h.c test-unistd.c \
+	test-unsetenv.c test-usleep.c test-verify.c test-verify-try.c \
+	test-wchar.c test-xalloc-die.c test-year2038.c
 DIST_SOURCES = test-accept.c test-alignasof.c test-alloca-opt.c \
-	test-arpa_inet.c test-assert.c test-binary-io.c test-bind.c \
-	test-boot-time.c test-c-ctype.c test-calloc-gnu.c \
-	test-cloexec.c test-close.c test-connect.c test-ctype.c \
-	test-dup2.c test-environ.c test-errno.c test-error.c \
-	test-fcntl.c test-fcntl-h.c test-fdopen.c test-fgetc.c \
-	test-float.c test-fputc.c test-fread.c test-free.c \
-	test-fstat.c test-ftruncate.c test-fwrite.c test-getcwd-lgpl.c \
-	test-getdtablesize.c test-getprogname.c test-gettimeofday.c \
-	test-ignore-value.c test-inet_pton.c test-intprops.c \
-	test-inttypes.c test-ioctl.c test-isblank.c \
+	test-arpa_inet.c test-array-mergesort.c test-assert.c \
+	test-binary-io.c test-bind.c test-boot-time.c test-c-ctype.c \
+	test-calloc-gnu.c test-cloexec.c test-close.c test-connect.c \
+	test-ctype.c test-dup2.c test-environ.c test-errno.c \
+	test-error.c test-fcntl.c test-fcntl-h.c test-fdopen.c \
+	test-fgetc.c test-float.c test-fputc.c test-fread.c \
+	test-free.c test-fstat.c test-ftruncate.c test-fwrite.c \
+	test-getcwd-lgpl.c test-getdtablesize.c test-getprogname.c \
+	test-gettimeofday.c test-ignore-value.c test-inet_pton.c \
+	test-intprops.c test-inttypes.c test-ioctl.c test-isblank.c \
 	test-isnand-nolibm.c test-isnanf-nolibm.c test-isnanl-nolibm.c \
 	test-largefile.c test-limits-h.c test-listen.c test-lock.c \
 	test-lstat.c test-malloc-gnu.c test-malloca.c test-math.c \
@@ -910,20 +937,20 @@ DIST_SOURCES = test-accept.c test-alignasof.c test-alloca-opt.c \
 	test-perror2.c test-pipe.c test-pselect.c test-pthread.c \
 	test-pthread-thread.c test-pthread_sigmask1.c \
 	test-pthread_sigmask2.c test-putenv.c test-raise.c \
-	test-random.c test-random-mt.c test-random_r.c \
+	test-random.c test-random-mt.c test-random_r.c test-readutmp.c \
 	test-realloc-gnu.c test-reallocarray.c test-rwlock1.c \
 	test-sched.c test-select.c test-select-fd.c \
 	test-select-stdin.c test-setsockopt.c test-signal-h.c \
 	test-signbit.c test-sigprocmask.c test-sleep.c test-sockets.c \
 	test-stat.c test-stat-time.c test-stdbool.c test-stdckdint.c \
 	test-stddef.c test-stdint.c test-stdio.c test-stdlib.c \
-	test-strerror.c test-strerror_r.c test-string.c test-symlink.c \
-	test-sys_ioctl.c test-sys_select.c test-sys_socket.c \
-	test-sys_stat.c test-sys_time.c test-sys_types.c \
-	test-sys_uio.c test-thread_create.c test-thread_self.c \
-	test-time.c test-time-h.c test-unistd.c test-unsetenv.c \
-	test-usleep.c test-verify.c test-verify-try.c test-wchar.c \
-	test-xalloc-die.c
+	test-strerror.c test-strerror_r.c test-string.c test-strnlen.c \
+	test-symlink.c test-sys_ioctl.c test-sys_select.c \
+	test-sys_socket.c test-sys_stat.c test-sys_time.c \
+	test-sys_types.c test-sys_uio.c test-thread_create.c \
+	test-thread_self.c test-time.c test-time-h.c test-unistd.c \
+	test-unsetenv.c test-usleep.c test-verify.c test-verify-try.c \
+	test-wchar.c test-xalloc-die.c test-year2038.c
 RECURSIVE_TARGETS = all-recursive check-recursive cscopelist-recursive \
 	ctags-recursive dvi-recursive html-recursive info-recursive \
 	install-data-recursive install-dvi-recursive \
@@ -2304,6 +2331,7 @@ PTHREAD_H_DEFINES_STRUCT_TIMESPEC = @PTHREAD_H_DEFINES_STRUCT_TIMESPEC@
 PTHREAD_SIGMASK_LIB = @PTHREAD_SIGMASK_LIB@
 PTRDIFF_T_SUFFIX = @PTRDIFF_T_SUFFIX@
 RANLIB = @RANLIB@
+READUTMP_LIB = @READUTMP_LIB@
 REPLACE_ABORT = @REPLACE_ABORT@
 REPLACE_ACCESS = @REPLACE_ACCESS@
 REPLACE_ACOSF = @REPLACE_ACOSF@
@@ -2669,6 +2697,7 @@ STDDEF_H = @STDDEF_H@
 STDDEF_NOT_IDEMPOTENT = @STDDEF_NOT_IDEMPOTENT@
 STDINT_H = @STDINT_H@
 STRIP = @STRIP@
+SYSTEMD_CHOICE = @SYSTEMD_CHOICE@
 SYS_IOCTL_H_HAVE_WINSOCK2_H = @SYS_IOCTL_H_HAVE_WINSOCK2_H@
 SYS_IOCTL_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS = @SYS_IOCTL_H_HAVE_WINSOCK2_H_AND_USE_SOCKETS@
 SYS_TIME_H_DEFINES_STRUCT_TIMESPEC = @SYS_TIME_H_DEFINES_STRUCT_TIMESPEC@
@@ -2752,7 +2781,8 @@ noinst_HEADERS =
 noinst_LIBRARIES = 
 pkgdata_DATA = 
 EXTRA_DIST = test-accept.c signature.h macros.h test-alignasof.c \
-	macros.h test-alloca-opt.c test-arpa_inet.c test-assert.c \
+	macros.h test-alloca-opt.c test-arpa_inet.c \
+	test-array-mergesort.c macros.h test-assert.c \
 	test-binary-io.sh test-binary-io.c macros.h test-bind.c \
 	signature.h macros.h test-boot-time.c macros.h test-c-ctype.c \
 	macros.h test-calloc-gnu.c macros.h test-cloexec.c macros.h \
@@ -2788,29 +2818,30 @@ EXTRA_DIST = test-accept.c signature.h macros.h test-alignasof.c \
 	macros.h test-putenv.c macros.h signature.h test-raise.c \
 	signature.h macros.h test-random.c test-random-mt.c \
 	signature.h macros.h test-random_r.c signature.h macros.h \
-	test-realloc-gnu.c macros.h test-reallocarray.c signature.h \
-	macros.h test-sched.c macros.h signature.h test-select.c \
-	test-select.h test-select-fd.c test-select-in.sh \
-	test-select-out.sh test-select-stdin.c test-setsockopt.c \
-	signature.h macros.h test-signal-h.c test-signbit.c \
-	minus-zero.h infinity.h macros.h test-sigprocmask.c \
-	signature.h macros.h test-sleep.c signature.h macros.h \
-	_Noreturn.h arg-nonnull.h c++defs.h warn-on-use.h \
-	test-sockets.c test-stat.h test-stat.c signature.h macros.h \
-	test-stat-time.c macros.h nap.h test-stdbool.c macros.h \
-	test-intprops.c test-stdckdint.c test-stddef.c test-stdint.c \
-	test-stdio.c macros.h test-stdlib.c test-sys_wait.h \
-	test-strerror.c signature.h macros.h test-strerror_r.c \
-	signature.h macros.h test-string.c test-symlink.h \
-	test-symlink.c signature.h macros.h test-sys_ioctl.c \
-	test-sys_select.c signature.h test-sys_socket.c \
-	test-sys_stat.c test-sys_time.c test-sys_types.c \
-	test-sys_uio.c init.sh test-init.sh test-thread_self.c \
-	test-thread_create.c macros.h test-time-h.c test-time.c \
-	signature.h macros.h test-unistd.c test-unsetenv.c signature.h \
-	macros.h test-usleep.c signature.h macros.h test-verify.c \
-	test-verify-try.c test-verify.sh test-wchar.c \
-	test-xalloc-die.c test-xalloc-die.sh
+	test-readutmp.c macros.h test-realloc-gnu.c macros.h \
+	test-reallocarray.c signature.h macros.h test-sched.c macros.h \
+	signature.h test-select.c test-select.h test-select-fd.c \
+	test-select-in.sh test-select-out.sh test-select-stdin.c \
+	test-setsockopt.c signature.h macros.h test-signal-h.c \
+	test-signbit.c minus-zero.h infinity.h macros.h \
+	test-sigprocmask.c signature.h macros.h test-sleep.c \
+	signature.h macros.h _Noreturn.h arg-nonnull.h c++defs.h \
+	warn-on-use.h test-sockets.c test-stat.h test-stat.c \
+	signature.h macros.h test-stat-time.c macros.h nap.h \
+	test-stdbool.c macros.h test-intprops.c test-stdckdint.c \
+	test-stddef.c test-stdint.c test-stdio.c macros.h \
+	test-stdlib.c test-sys_wait.h test-strerror.c signature.h \
+	macros.h test-strerror_r.c signature.h macros.h test-string.c \
+	test-strnlen.c zerosize-ptr.h signature.h macros.h \
+	test-symlink.h test-symlink.c signature.h macros.h \
+	test-sys_ioctl.c test-sys_select.c signature.h \
+	test-sys_socket.c test-sys_stat.c test-sys_time.c \
+	test-sys_types.c test-sys_uio.c init.sh test-init.sh \
+	test-thread_self.c test-thread_create.c macros.h test-time-h.c \
+	test-time.c signature.h macros.h test-unistd.c test-unsetenv.c \
+	signature.h macros.h test-usleep.c signature.h macros.h \
+	test-verify.c test-verify-try.c test-verify.sh test-wchar.c \
+	test-xalloc-die.c test-xalloc-die.sh test-year2038.c
 BUILT_SOURCES = 
 SUFFIXES = 
 
@@ -2868,6 +2899,7 @@ test_pthread_thread_LDADD = $(LDADD) @LIBPMULTITHREAD@
 test_pthread_sigmask1_LDADD = $(LDADD) @PTHREAD_SIGMASK_LIB@
 test_pthread_sigmask2_LDADD = $(LDADD) @PTHREAD_SIGMASK_LIB@ @LIBMULTITHREAD@
 test_random_mt_LDADD = $(LDADD) $(LIBINTL) $(LIBMULTITHREAD) $(YIELD_LIB)
+test_readutmp_LDADD = $(LDADD) @READUTMP_LIB@ $(LIBINTL)
 test_select_LDADD = $(LDADD) @SELECT_LIB@ @LIBSOCKET@ $(INET_PTON_LIB)
 test_select_fd_LDADD = $(LDADD) @SELECT_LIB@
 test_select_stdin_LDADD = $(LDADD) @SELECT_LIB@
@@ -2973,6 +3005,10 @@ test-alloca-opt$(EXEEXT): $(test_alloca_opt_OBJECTS) $(test_alloca_opt_DEPENDENC
 test-arpa_inet$(EXEEXT): $(test_arpa_inet_OBJECTS) $(test_arpa_inet_DEPENDENCIES) $(EXTRA_test_arpa_inet_DEPENDENCIES) 
 	@rm -f test-arpa_inet$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_arpa_inet_OBJECTS) $(test_arpa_inet_LDADD) $(LIBS)
+
+test-array-mergesort$(EXEEXT): $(test_array_mergesort_OBJECTS) $(test_array_mergesort_DEPENDENCIES) $(EXTRA_test_array_mergesort_DEPENDENCIES) 
+	@rm -f test-array-mergesort$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_array_mergesort_OBJECTS) $(test_array_mergesort_LDADD) $(LIBS)
 
 test-assert$(EXEEXT): $(test_assert_OBJECTS) $(test_assert_DEPENDENCIES) $(EXTRA_test_assert_DEPENDENCIES) 
 	@rm -f test-assert$(EXEEXT)
@@ -3234,6 +3270,10 @@ test-random_r$(EXEEXT): $(test_random_r_OBJECTS) $(test_random_r_DEPENDENCIES) $
 	@rm -f test-random_r$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_random_r_OBJECTS) $(test_random_r_LDADD) $(LIBS)
 
+test-readutmp$(EXEEXT): $(test_readutmp_OBJECTS) $(test_readutmp_DEPENDENCIES) $(EXTRA_test_readutmp_DEPENDENCIES) 
+	@rm -f test-readutmp$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_readutmp_OBJECTS) $(test_readutmp_LDADD) $(LIBS)
+
 test-realloc-gnu$(EXEEXT): $(test_realloc_gnu_OBJECTS) $(test_realloc_gnu_DEPENDENCIES) $(EXTRA_test_realloc_gnu_DEPENDENCIES) 
 	@rm -f test-realloc-gnu$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_realloc_gnu_OBJECTS) $(test_realloc_gnu_LDADD) $(LIBS)
@@ -3330,6 +3370,10 @@ test-string$(EXEEXT): $(test_string_OBJECTS) $(test_string_DEPENDENCIES) $(EXTRA
 	@rm -f test-string$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_string_OBJECTS) $(test_string_LDADD) $(LIBS)
 
+test-strnlen$(EXEEXT): $(test_strnlen_OBJECTS) $(test_strnlen_DEPENDENCIES) $(EXTRA_test_strnlen_DEPENDENCIES) 
+	@rm -f test-strnlen$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_strnlen_OBJECTS) $(test_strnlen_LDADD) $(LIBS)
+
 test-symlink$(EXEEXT): $(test_symlink_OBJECTS) $(test_symlink_DEPENDENCIES) $(EXTRA_test_symlink_DEPENDENCIES) 
 	@rm -f test-symlink$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_symlink_OBJECTS) $(test_symlink_LDADD) $(LIBS)
@@ -3406,6 +3450,10 @@ test-xalloc-die$(EXEEXT): $(test_xalloc_die_OBJECTS) $(test_xalloc_die_DEPENDENC
 	@rm -f test-xalloc-die$(EXEEXT)
 	$(AM_V_CCLD)$(LINK) $(test_xalloc_die_OBJECTS) $(test_xalloc_die_LDADD) $(LIBS)
 
+test-year2038$(EXEEXT): $(test_year2038_OBJECTS) $(test_year2038_DEPENDENCIES) $(EXTRA_test_year2038_DEPENDENCIES) 
+	@rm -f test-year2038$(EXEEXT)
+	$(AM_V_CCLD)$(LINK) $(test_year2038_OBJECTS) $(test_year2038_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -3416,6 +3464,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-alignasof.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-alloca-opt.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-arpa_inet.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-array-mergesort.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-assert.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-binary-io.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-bind.Po@am__quote@ # am--include-marker
@@ -3480,6 +3529,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-random-mt.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-random.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-random_r.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-readutmp.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-realloc-gnu.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-reallocarray.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-rwlock1.Po@am__quote@ # am--include-marker
@@ -3504,6 +3554,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-strerror.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-strerror_r.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-string.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-strnlen.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-symlink.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-sys_ioctl.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-sys_select.Po@am__quote@ # am--include-marker
@@ -3523,6 +3574,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-verify.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-wchar.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-xalloc-die.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test-year2038.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -3836,6 +3888,13 @@ test-alloca-opt.log: test-alloca-opt$(EXEEXT)
 test-arpa_inet.log: test-arpa_inet$(EXEEXT)
 	@p='test-arpa_inet$(EXEEXT)'; \
 	b='test-arpa_inet'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test-array-mergesort.log: test-array-mergesort$(EXEEXT)
+	@p='test-array-mergesort$(EXEEXT)'; \
+	b='test-array-mergesort'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
@@ -4302,6 +4361,13 @@ test-random_r.log: test-random_r$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test-readutmp.log: test-readutmp$(EXEEXT)
+	@p='test-readutmp$(EXEEXT)'; \
+	b='test-readutmp'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 test-realloc-gnu.log: test-realloc-gnu$(EXEEXT)
 	@p='test-realloc-gnu$(EXEEXT)'; \
 	b='test-realloc-gnu'; \
@@ -4463,6 +4529,13 @@ test-string.log: test-string$(EXEEXT)
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test-strnlen.log: test-strnlen$(EXEEXT)
+	@p='test-strnlen$(EXEEXT)'; \
+	b='test-strnlen'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
 test-symlink.log: test-symlink$(EXEEXT)
 	@p='test-symlink$(EXEEXT)'; \
 	b='test-symlink'; \
@@ -4599,6 +4672,13 @@ test-wchar.log: test-wchar$(EXEEXT)
 test-xalloc-die.sh.log: test-xalloc-die.sh
 	@p='test-xalloc-die.sh'; \
 	b='test-xalloc-die.sh'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+test-year2038.log: test-year2038$(EXEEXT)
+	@p='test-year2038$(EXEEXT)'; \
+	b='test-year2038'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
@@ -4875,6 +4955,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/test-alignasof.Po
 	-rm -f ./$(DEPDIR)/test-alloca-opt.Po
 	-rm -f ./$(DEPDIR)/test-arpa_inet.Po
+	-rm -f ./$(DEPDIR)/test-array-mergesort.Po
 	-rm -f ./$(DEPDIR)/test-assert.Po
 	-rm -f ./$(DEPDIR)/test-binary-io.Po
 	-rm -f ./$(DEPDIR)/test-bind.Po
@@ -4939,6 +5020,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/test-random-mt.Po
 	-rm -f ./$(DEPDIR)/test-random.Po
 	-rm -f ./$(DEPDIR)/test-random_r.Po
+	-rm -f ./$(DEPDIR)/test-readutmp.Po
 	-rm -f ./$(DEPDIR)/test-realloc-gnu.Po
 	-rm -f ./$(DEPDIR)/test-reallocarray.Po
 	-rm -f ./$(DEPDIR)/test-rwlock1.Po
@@ -4963,6 +5045,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/test-strerror.Po
 	-rm -f ./$(DEPDIR)/test-strerror_r.Po
 	-rm -f ./$(DEPDIR)/test-string.Po
+	-rm -f ./$(DEPDIR)/test-strnlen.Po
 	-rm -f ./$(DEPDIR)/test-symlink.Po
 	-rm -f ./$(DEPDIR)/test-sys_ioctl.Po
 	-rm -f ./$(DEPDIR)/test-sys_select.Po
@@ -4982,6 +5065,7 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/test-verify.Po
 	-rm -f ./$(DEPDIR)/test-wchar.Po
 	-rm -f ./$(DEPDIR)/test-xalloc-die.Po
+	-rm -f ./$(DEPDIR)/test-year2038.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-hdr distclean-tags
@@ -5033,6 +5117,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/test-alignasof.Po
 	-rm -f ./$(DEPDIR)/test-alloca-opt.Po
 	-rm -f ./$(DEPDIR)/test-arpa_inet.Po
+	-rm -f ./$(DEPDIR)/test-array-mergesort.Po
 	-rm -f ./$(DEPDIR)/test-assert.Po
 	-rm -f ./$(DEPDIR)/test-binary-io.Po
 	-rm -f ./$(DEPDIR)/test-bind.Po
@@ -5097,6 +5182,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/test-random-mt.Po
 	-rm -f ./$(DEPDIR)/test-random.Po
 	-rm -f ./$(DEPDIR)/test-random_r.Po
+	-rm -f ./$(DEPDIR)/test-readutmp.Po
 	-rm -f ./$(DEPDIR)/test-realloc-gnu.Po
 	-rm -f ./$(DEPDIR)/test-reallocarray.Po
 	-rm -f ./$(DEPDIR)/test-rwlock1.Po
@@ -5121,6 +5207,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/test-strerror.Po
 	-rm -f ./$(DEPDIR)/test-strerror_r.Po
 	-rm -f ./$(DEPDIR)/test-string.Po
+	-rm -f ./$(DEPDIR)/test-strnlen.Po
 	-rm -f ./$(DEPDIR)/test-symlink.Po
 	-rm -f ./$(DEPDIR)/test-sys_ioctl.Po
 	-rm -f ./$(DEPDIR)/test-sys_select.Po
@@ -5140,6 +5227,7 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/test-verify.Po
 	-rm -f ./$(DEPDIR)/test-wchar.Po
 	-rm -f ./$(DEPDIR)/test-xalloc-die.Po
+	-rm -f ./$(DEPDIR)/test-year2038.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
