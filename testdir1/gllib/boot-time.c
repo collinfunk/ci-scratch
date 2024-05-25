@@ -43,7 +43,7 @@
 # include <OS.h>
 #endif
 
-#ifdef _WIN32
+#if defined _WIN32 && ! defined __CYGWIN__
 # define WIN32_LEAN_AND_MEAN
 # include <windows.h>
 # include <sysinfoapi.h>
@@ -254,8 +254,10 @@ get_boot_time_uncached (struct timespec *p_boot_time)
     {
       /* Workaround for Windows:  */
       get_windows_boot_time (&found_boot_time);
+#  ifndef __CYGWIN__
       if (found_boot_time.tv_sec == 0)
         get_windows_boot_time_fallback (&found_boot_time);
+#  endif
     }
 # endif
 

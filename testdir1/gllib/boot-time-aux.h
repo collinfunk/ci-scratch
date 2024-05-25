@@ -345,15 +345,16 @@ get_windows_boot_time (struct timespec *p_boot_time)
   return -1;
 }
 
-# if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
+# ifndef __CYGWIN__
+#  if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
 
 /* Don't assume that UNICODE is not defined.  */
-#  undef LoadLibrary
-#  define LoadLibrary LoadLibraryA
+#   undef LoadLibrary
+#   define LoadLibrary LoadLibraryA
 
 /* Avoid warnings from gcc -Wcast-function-type.  */
-#  define GetProcAddress \
-    (void *) GetProcAddress
+#   define GetProcAddress \
+     (void *) GetProcAddress
 
 /* GetTickCount64 is only available on Windows Vista and later.  */
 typedef ULONGLONG (WINAPI * GetTickCount64FuncType) (void);
@@ -373,12 +374,11 @@ initialize (void)
   initialized = TRUE;
 }
 
-# else
+#  else
 
-extern WINAPI ULONGLONG WINAPI GetTickCount64 (VOID);
-#  define GetTickCount64Func GetTickCount64
+#   define GetTickCount64Func GetTickCount64
 
-# endif
+#  endif
 
 /* Fallback for Windows in the form:
      boot time = current time - uptime
@@ -388,10 +388,10 @@ extern WINAPI ULONGLONG WINAPI GetTickCount64 (VOID);
 static int
 get_windows_boot_time_fallback (struct timespec *p_boot_time)
 {
-# if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
+#  if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
   if (! initialized)
     initialize ();
-# endif
+#  endif
   if (GetTickCount64Func != NULL)
     {
       ULONGLONG uptime_ms = GetTickCount64Func ();
@@ -418,4 +418,5 @@ get_windows_boot_time_fallback (struct timespec *p_boot_time)
   return -1;
 }
 
+# endif
 #endif
