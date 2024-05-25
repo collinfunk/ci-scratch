@@ -375,6 +375,7 @@ initialize (void)
 
 # else
 
+extern WINAPI ULONGLONG WINAPI GetTickCount64 (VOID);
 #  define GetTickCount64Func GetTickCount64
 
 # endif
@@ -390,7 +391,7 @@ get_windows_boot_time_fallback (struct timespec *p_boot_time)
 # if !(_WIN32_WINNT >= _WIN32_WINNT_VISTA)
   if (! initialized)
     initialize ();
-#endif
+# endif
   if (GetTickCount64Func != NULL)
     {
       ULONGLONG uptime_ms = GetTickCount64Func ();
